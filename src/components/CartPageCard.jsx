@@ -14,6 +14,17 @@ const CartPageCard = (props) => {
           alert("Quantity must be atleast 1");
           setinputvalue(props.data.quantity)
         }
+        else if (inputvalue === props.data.quantity) {
+    
+      toast(`${props.data.title.slice(0 , 19)}... is already set to ${inputvalue} ⚡`, {
+      icon: "ℹ️",
+      style: {
+        borderRadius: "10px",
+        background: "#222",
+        color: "#fff",
+      },
+    });
+  }
         else{
         dispatch(updatecart({id ,value}));
           toast.success(`${props.data.title.slice(0 , 19)}... quantity updated to ${value}  🛒`, {
