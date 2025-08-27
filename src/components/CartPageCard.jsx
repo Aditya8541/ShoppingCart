@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { updatecart } from "../Redux/cartSlice";
+import toast from "react-hot-toast";
 const CartPageCard = (props) => {
   const [inputvalue , setinputvalue] = useState(props.data.quantity)
   
@@ -15,12 +16,26 @@ const CartPageCard = (props) => {
         }
         else{
         dispatch(updatecart({id ,value}));
+          toast.success(`${props.data.title.slice(0 , 19)}... quantity updated to ${value}  🛒`, {
+        style: {
+      borderRadius: "10px",
+      background: "#333",
+      color: "#fff",
+    },
+  });
         }
     }
     const items = useSelector((state)=> state.cart.items)
     const tempItems = useSelector((state)=> state.cart.tempItems)
     const handleremove = (id) => {
         dispatch(removefromcart(id))
+        toast.success(`${props.data.title.slice(0,19)}... removed from cart 🛒`, {
+        style: {
+      borderRadius: "10px",
+      background: "#333",
+      color: "#fff",
+    },
+  });
     }
   
   return (

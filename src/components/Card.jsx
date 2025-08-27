@@ -1,10 +1,18 @@
 import { useDispatch } from "react-redux";
 import { addtocart } from "../Redux/cartSlice";
+import toast from "react-hot-toast";
 const Card = (props) => {
 
     const dispatch = useDispatch();
     const handleaddtocart = (data) => {
         dispatch(addtocart(data))
+        toast.success(`${data.title.slice(0 , 19)}... added to cart 🛒`, {
+        style: {
+      borderRadius: "10px",
+      background: "#333",
+      color: "#fff",
+    },
+  });
     }
     return(
         <div className="flex flex-col  items-center pb-5  w-70 rounded-md  shadow-xl gap-1 transition-transform duration-300 ease-in-out hover:scale-105">
