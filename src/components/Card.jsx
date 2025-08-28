@@ -15,11 +15,13 @@ const Card = (props) => {
   });
     }
     return(
-        <div className="flex flex-col  items-center pb-5  w-70 rounded-md  shadow-xl gap-1 transition-transform duration-300 ease-in-out hover:scale-105">
+        <div className="relative group overflow-hidden flex flex-col  items-center pb-5  w-70 rounded-md  shadow-xl gap-1 transition-transform duration-300 ease-in-out hover:scale-105">
             <img src={props.data.image} alt="" className="h-40 w-35 " />
             <p className="font-semibold mt-2 text-lg">{(props.data.title.length > 20) ? `${props.data.title.slice(0,19)}...`  : `${props.data.title}`}</p>
             <p className="font-semibold">Price : ${props.data.price}</p>
             <button className="cursor-pointer mt-2 px-3 py-2 bg-orange-400 text-white rounded-md font-semibold" onClick={() =>handleaddtocart(props.data)}>Add to Cart</button>
+            <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400 group-hover:w-full transition-all duration-700 ease-out"></span>
+
         </div>
     )
 }
